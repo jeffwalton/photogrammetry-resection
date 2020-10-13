@@ -150,12 +150,9 @@ def coll_func(indep_vars):
     eop['YL'] = indep_vars[4]
     eop['ZL'] = indep_vars[5]
 
-    i = 0
     F = np.zeros(2*len(label))
-    for l in label:
-
+    for i,_ in enumerate(label):
         F[2*i], F[2*i+1] = collinearity_eqn_residual(iop,eop,x[i],y[i],X[i],Y[i],Z[i])
-        i += 1
 
     return F
 
@@ -183,12 +180,12 @@ x0[5] = eop['ZL']
 
 x, cov_x, info, msg, ier = leastsq(coll_func, x0, full_output=True)
 
-print 'Solution:'
-print 'omega, ', x[0]
-print 'phi, ', x[1]
-print 'kappa, ', x[2]
-print 'XL, ', x[3]
-print 'YL, ', x[4]
-print 'ZL, ', x[5]
-print 'number of function evaluations: ', info['nfev']
-print 'sum squared residuals: ', np.sum(info['fvec']**2)
+print(f'Solution:')
+print(f'omega, {x[0]}')
+print(f'phi, {x[1]}')
+print(f'kappa, {x[2]}')
+print(f'XL, {x[3]}')
+print(f'YL, {x[4]}')
+print(f'ZL, {x[5]}')
+print(f"number of function evaluations: {info['nfev']}")
+print(f"sum squared residuals: {np.sum(info['fvec']**2)}")

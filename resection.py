@@ -150,13 +150,10 @@ def coll_func(indep_vars):
     eop['YL'] = indep_vars[4]
     eop['ZL'] = indep_vars[5]
 
-    i = 0
     F = 0.0
-    for l in label:
-
+    for i,_ in enumerate(label):
         F1, F2 = collinearity_eqn_residual(iop,eop,x[i],y[i],X[i],Y[i],Z[i])
         F += F1**2 + F2**2
-        i += 1
 
     return F
 
@@ -186,10 +183,10 @@ res = minimize(coll_func, x0, method='BFGS', options={'disp': True})
 #res = minimize(coll_func, x0, options={'disp': True})
 
 #print res.x
-print 'Solution:'
-print 'omega, ', res.x[0]
-print 'phi, ', res.x[1]
-print 'kappa, ', res.x[2]
-print 'XL, ', res.x[3]
-print 'YL, ', res.x[4]
-print 'ZL, ', res.x[5]
+print('Solution:')
+print(f'omega, {res.x[0]}')
+print(f'phi, {res.x[1]}')
+print(f'kappa, {res.x[2]}')
+print(f'XL, {res.x[3]}')
+print(f'YL, {res.x[4]}')
+print(f'ZL, {res.x[5]}')
