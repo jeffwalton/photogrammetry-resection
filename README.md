@@ -11,4 +11,4 @@ Two input files are needed: camera calibration and control points. Sample data i
 
 Usage: python resection.py cam.inp resect.inp
 
-The Jupyter notebook compares three different solvers: scipy.minimize(), scipy.leastsq() and scipy.leastsq() with derivative.
+The Jupyter notebook compares three different solvers: scipy.minimize(), scipy.leastsq() and scipy.leastsq() with first derivative.
